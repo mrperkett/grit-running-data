@@ -224,9 +224,9 @@ def parse_grit_table_header(table_header: Union[etree._Element, None]) -> list[s
     if table_header is None:
         raise ValueError("table_header is None")
     if table_header.tag != "thead":
-        raise ValueError(f"table_header tag is expected to be thead")
+        raise ValueError("table_header tag is expected to be thead")
     if len(table_header) != 1 or table_header[0].tag != "tr":
-        raise ValueError(f"Expected table_header to have a single child with tag 'tr'")
+        raise ValueError("Expected table_header to have a single child with tag 'tr'")
     header = [node.text for node in table_header[0]]
     return header
 
