@@ -274,12 +274,12 @@ def parse_grit_table_body(
     return data
 
 
-def parse_grit_html(inp_file: Path) -> pd.DataFrame:
+def parse_grit_html(html_text: str) -> pd.DataFrame:
     """
     Parse the GRIT HTML table node and build a Pandas dataframe with the results
 
     Args:
-        inp_file (Path): saved HTML input file path
+        html_text (str): input HTML text to parse
 
     Raises:
         ValueError: header does not match what was expected (maybe format has changed?)
@@ -287,12 +287,9 @@ def parse_grit_html(inp_file: Path) -> pd.DataFrame:
     Returns:
         pd.DataFrame: df
     """
-    # read html file
-    with open(inp_file, "r") as input_file:
-        s = input_file.read()
-
     # parse table header to verify it matches what is expected
-    table_header = etree.HTML(s).find("body/table/thead")
+    root = etree.HTML(html_text)
+    table_header = root.find("body/table/thead")
     table_column_names = parse_grit_table_header(table_header)
     if table_column_names != EXPECTED_HEADER:
         raise ValueError(
@@ -303,7 +300,7 @@ def parse_grit_html(inp_file: Path) -> pd.DataFrame:
     handlers = get_handlers()
 
     # parse table body
-    table_body = etree.HTML(s).find("body/table/tbody")
+    table_body = root.find("body/table/tbody")
     data = parse_grit_table_body(table_body, handlers)
 
     df = pd.DataFrame(data, columns=column_names)

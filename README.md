@@ -38,6 +38,8 @@ tests/test_parsing.py ...............                                           
 
 You can convert the running results HTML table into a CSV using the `parse_results.py` script.  You can generate statistics using this CSV file as input to the `explore_grit_results.ipynb` Jupyter notebook.  The only manual step is saving the HTML results file, which is straightforward with instructions provided below.  It may be possible to automate scraping the results HTML, but the website configuration for the competition results seemed to discourage this.  So I did not pursue it.
 
+I have also included a script `obfuscate_results.py` to replace the first and last names of participants in an HTML file so that you can anonymize the HTML file.  This script was used to generate the example HTML file in this repo.
+
 ## Saving HTML file
 
 1. Navigate to the race results on runsignup.com and select to view "All" results.
@@ -66,12 +68,32 @@ options:
 Example:
 
 ```shell
-python3 ./parse_results.py -i input/grit-table-2024.07.27-full.html -o output/parsed-grit-table-2024.07.27-full.csv
+python3 ./parse_results.py -i input/example-results.html -o output/example-results.csv
 ```
 
 ## Generating stats
 
 To generate statistics, run the `explore_grit_results.ipynb` Jupyter notebook.
+
+## Anonymizing HTML
+
+```
+usage: obfuscate_results.py [-h] --input INPUT_FILE_PATH --output OUTPUT_FILE_PATH
+
+options:
+  -h, --help            show this help message and exit
+  --input INPUT_FILE_PATH, -i INPUT_FILE_PATH
+                        HTML input file path
+  --output OUTPUT_FILE_PATH, -o OUTPUT_FILE_PATH
+                        obfuscated HTML output file path
+```
+
+Example:
+
+```shell
+python3 ./obfuscate_results.py -i input/grit-table-2024.07.27-full.html -o input/example-results.html
+```
+
 
 # Summary
 TODO

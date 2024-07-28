@@ -2,7 +2,7 @@ import argparse
 import os
 from pathlib import Path
 
-from parsing import parse_grit_html
+from utils import obfuscate_html_table
 
 
 def parse_args() -> argparse.Namespace:
@@ -31,7 +31,7 @@ def parse_args() -> argparse.Namespace:
         dest="output_file_path",
         type=str,
         required=True,
-        help="CSV output file path",
+        help="obfuscated HTML output file path",
     )
 
     args = parser.parse_args()
@@ -42,6 +42,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main():
+    # parse command line arguments
     args = parse_args()
     input_file_path = Path(args.input_file_path)
     output_file_path = Path(args.output_file_path)
@@ -50,10 +51,11 @@ def main():
     with open(input_file_path, "r") as input_file:
         html_text = input_file.read()
 
-    df = parse_grit_html(html_text)
+    obfuscated_html_text = obfuscate_html_table(html_text, seed=42)
 
-    # write output CSV file
-    df.to_csv(output_file_path, header=True, index=False)
+    # write output file
+    with open(output_file_path, "wb") as out_file:
+        out_file.write(obfuscated_html_text)
 
 
 if __name__ == "__main__":

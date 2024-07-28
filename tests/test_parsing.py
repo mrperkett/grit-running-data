@@ -327,9 +327,9 @@ class TestParsingFunctions:
         assert len(data) == 1
         assert data[0] == self.expected_row
 
-    def test_parse_grit_html(self, mock_single_entry_table_html_file):
+    def test_parse_grit_html(self):
         """
-        Parse HTML file containing table properly
+        Properly parse HTML table string
         """
-        df = parse_grit_html(Path("mock_path_to_input_file.html"))
+        df = parse_grit_html(self.single_entry_table_html_str)
         pd.testing.assert_frame_equal(df, self.expected_df)
