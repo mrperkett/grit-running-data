@@ -185,6 +185,7 @@ def get_handlers() -> list[Callable]:
     """
     # TODO: parse clock_time, chip_time, pace into time or deltatime object
     # TODO: parse percent into a float instead of str
+    # TODO: parse age_percentage as float handling commas ("3,889.7")
 
     handlers = [
         get_simple_value_handler(int),  # "place",
@@ -201,7 +202,7 @@ def get_handlers() -> list[Callable]:
         elevation_gain_handler,  # "elevation_gain_ft",
         get_simple_value_handler(str),  # "pace",
         get_simple_value_handler(int),  # "age",
-        get_simple_value_handler(float),  # "age_percentage",
+        get_simple_value_handler(str),  # "age_percentage",
         get_simple_value_handler(str),  # "run_crew_name",
     ]
 

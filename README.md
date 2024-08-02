@@ -91,9 +91,24 @@ options:
 Example:
 
 ```shell
-python3 ./obfuscate_results.py -i input/grit-table-2024.07.27-full.html -o input/example-results.html
+python3 ./obfuscate_results.py -i input/grit-table-2024.08.01-full.html -o input/example-results.html
 ```
 
 
 # Summary
-TODO
+
+Here are some of the results after the close of the month-long running competition.  All data has been anonymized and is provided in [input/example-results.html](input/example-results.html) and [output/example-results.csv](input/example-results.csv).
+
+See more of the results in [explore_grit_results.ipynb](explore_grit_results.ipynb).
+
+## Distances
+
+<img src="output/output-distance-distribution.png" width="700"/>
+
+<img src="resources/top-distances.png" width="700"/>
+
+## Elevation gain
+
+<img src="output/output-elevation-distribution-all.png" width="700"/>
+
+<img src="resources/top-elevation-gains.png" width="700"/>
