@@ -15,6 +15,9 @@ cd grit-running-data
 
 # install requirements
 python3 -m pip install requirements.txt
+
+# register the kernel so that it can be used with Jupyter
+python3 -m ipykernel install --user --name test-grit-running-data
 ```
 
 Run unit tests to verify the setup 
@@ -93,6 +96,12 @@ Example:
 ```shell
 python3 ./obfuscate_results.py -i input/grit-table-2024.08.01-full.html -o input/example-results.html
 ```
+
+## Running the Jupyter notebook
+
+To run `explore_grit_results.ipynb`, load the Jupyter notebook using your preferred method and select the `test-grit-running-data` kernel.  You can see the documention for the repo below for more details on setting up Juypter.
+
+https://github.com/mrperkett/udacity-donor-prediction?tab=readme-ov-file#jupyter-lab
 
 
 # Summary

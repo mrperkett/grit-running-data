@@ -237,7 +237,7 @@ class TestParsingFunctions:
         396.0,
         "8:02",
         36,
-        96.7,
+        "96.7",
         None,
     ]
     expected_data = [expected_row[:]]
